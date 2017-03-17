@@ -1,0 +1,72 @@
+<!doctype html>
+<HTML>
+	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+
+	</head>
+
+	<body>
+		
+		<script>
+			  window.fbAsyncInit = function() {
+			    FB.init({
+			      appId      : '1652529888388048',
+			      xfbml      : true,
+			      version    : 'v2.8'
+			    });
+			    FB.AppEvents.logPageView();
+			  };
+
+			  FB.getLoginStatus(function(response){
+			    if (response.status === 'connected')
+			    {
+			        document.getElementById('status').innerHTML = 'we are connected'
+			    }
+			    else if (response.status === 'not_authorized')
+			    {
+			        document.getElementById('status').innerHTML = 'we are not logged in'
+			    }
+			    else
+			    {
+			    	document.getElementById('status').innerHTML = 'erreur'
+			    }
+			  });
+
+			  (function(d, s, id){
+			     var js, fjs = d.getElementsByTagName(s)[0];
+			     if (d.getElementById(id)) {return;}
+			     js = d.createElement(s); js.id = id;
+			     js.src = "//connect.facebook.net/en_US/sdk.js";
+			     fjs.parentNode.insertBefore(js, fjs);
+			   }(document, 'script', 'facebook-jssdk'));
+
+			  function login()
+			  {
+			  	FB.login(function(response){
+			    if (response.status === 'connected')
+			    {
+			        document.getElementById('status').innerHTML = 'we are connected'
+			    }
+			    else if (response.status === 'not_authorized')
+			    {
+			        document.getElementById('status').innerHTML = 'we are not logged in'
+			    }
+			    else
+			    {
+			    	document.getElementById('status').innerHTML = 'erreur'
+			    }
+			  		});
+			  }
+
+
+		</script>
+		<div id='status'></div>
+
+		<button onclick="login()">login</button>
+	</body>
+
+</HTML>
