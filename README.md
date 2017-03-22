@@ -1,1 +1,1 @@
-# pingStudyChoice.github.io
+ # https://projetpingsc.github.io/pingStudyChoice/
