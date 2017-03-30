@@ -6,7 +6,7 @@ require('localisation/GoogleMapAPI.class.php');
 $map = new GoogleMapAPI('map');
 
 //(3) On ajoute la clef de Google Maps.
-$map->setAPIKey('AIzaSyBdM53JrTRDv744_tRwPRdxltX9Ni9M');
+$map->setAPIKey('<AIzaSyBdM53JrTRDv744_tRwPRdxltX9Ni9M>');
     
 //(4) On ajoute les caractéristiques que l'on désire à notre carte.
 $map->setWidth("800px");
