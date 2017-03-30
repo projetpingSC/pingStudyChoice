@@ -13,14 +13,24 @@ var mapProp= {
     zoom:5,
 };
 var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-}
- 
-  var marker = new google.maps.Marker({
-  position:myCenter,
+    
+ var marker = new google.maps.Marker({
+  position:center,
   animation:google.maps.Animation.BOUNCE
   });
 
-marker.setMap(map);
+marker.setMap(mapProp);
+    
+var myTrip = [stavanger,amsterdam,london];
+var flightPath = new google.maps.Polyline({
+  path:myTrip,
+  strokeColor:"#0000FF",
+  strokeOpacity:0.8,
+  strokeWeight:2
+});
+}
+ 
+ 
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdM53JrTRDv744_tRwPRdxltX9Ni9M5gU&callback=myMap"></script>
