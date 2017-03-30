@@ -29,6 +29,10 @@ var flightPath = new google.maps.Polyline({
   strokeWeight:2
 });
 }
+  google.maps.event.addListener(marker,'click',function() {
+  map.setZoom(9);
+  map.setCenter(marker.getPosition());
+  });
  
  
 </script>
