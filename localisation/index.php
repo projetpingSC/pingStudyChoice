@@ -1,6 +1,6 @@
 <?php
 //(1) On inclut la classe de Google Maps pour générer ensuite la carte.
-require('localisation/GoogleMapAPI.class.php');
+require('GoogleMapAPI.class.php');
 
 //(2) On crée une nouvelle carte; Ici, notre carte sera $map.
 $map = new GoogleMapAPI('map');
