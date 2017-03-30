@@ -14,6 +14,8 @@ var mapProp= {
 };
 var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
     
+}
+    
  var marker = new google.maps.Marker({
   position:center,
   animation:google.maps.Animation.BOUNCE
@@ -28,7 +30,7 @@ var flightPath = new google.maps.Polyline({
   strokeOpacity:0.8,
   strokeWeight:2
 });
-}
+    
   google.maps.event.addListener(marker,'click',function() {
   map.setZoom(9);
   map.setCenter(marker.getPosition());
