@@ -1,6 +1,9 @@
 <?php 
-session_start();
-
-header("Location: editer_profil.php?id=".$_SESSION['id']); 
+try
+	$bdd = new PDO('mysql:host=mysql-studychoice.alwaysdata.net;dbname=users', '136109', 'root');
+	echo "succes";
+catch(Exception $e){
+	echo "fail";
+}
 
 ?>
