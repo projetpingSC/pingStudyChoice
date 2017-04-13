@@ -1,7 +1,8 @@
 <?php 
-try
+try{
 	$bdd = new PDO('mysql:host=mysql-studychoice.alwaysdata.net;dbname=users', '136109', 'root');
 	echo "succes";
+}
 catch(Exception $e){
 	echo "fail";
 }
