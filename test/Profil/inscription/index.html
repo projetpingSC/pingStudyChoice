@@ -1,4 +1,92 @@
+<script type="php"><?php
+try{
+   $bdd = new PDO('mysql:host=127.0.0.1;dbname=tes', 'root', ''); 
+   echo'succes   ';
+}
+catch(Exception $e){
+   echo'error  ';
+}
 
+
+if(isset($_SESSION['id']))
+{
+   header("Location: profil.php");
+}
+
+
+if(isset($_POST['forminscription'])) {
+   $nom = htmlspecialchars($_POST['nom']);
+   $prenom = htmlspecialchars($_POST['prenom']);
+   $mail = htmlspecialchars($_POST['mail']);
+   $mail2 = htmlspecialchars($_POST['mail2']);
+   $mdp = sha1($_POST['mdp']);
+   $mdp2 = sha1($_POST['mdp2']);
+   $prof = htmlspecialchars($_POST['prof']);
+   if(!empty($_POST['nom']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2']) AND !empty($_POST['prenom'])  AND !empty($_POST['prof'])) 
+   {
+      $nomlength = strlen($nom);
+      $prenomlength = strlen($prenom);
+      if($prenomlength <= 255)
+      {
+         if($nomlength <= 255) 
+         {
+            if ($prof == $_POST['prof']) { $eleve = 0; }  else { $eleve = 1; }
+            if($mail == $mail2) {
+               if(filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+                    $reqmail = $bdd->query("SELECT * FROM test3");
+                    $result = $reqmail->fetch();
+                    if ( $result == null)
+                    {
+                        //$this->remplir_BDD($mail, $bdd, $prenom, $nom, $mail, $mdp, $eleve);
+                     $getid = $mailexist['id'];
+                     if($mdp == $mdp2) {
+                      $insertmbr = $bdd->prepare("INSERT INTO test3(id, prenom, nom, mail, password, statut) VALUES(?, ?, ?, ?, ?, ?)");
+                          $insertmbr->execute(array($getid+1, $prenom, $nom, $mail, $mdp, $eleve));
+                          unset($insertmbr);
+                         $erreur = "Votre compte a bien été créé ! <a href=\"connexion.php\">Me connecter</a>";
+                     }else {
+                         $erreur = "Vos mots de passes ne correspondent pas !";
+                     }
+                     }else{ 
+                       while ($mailexist = $result)
+                       {
+                        echo' mail existe            ';
+                       if ($mail != $mailexist['mail'])
+                       {
+                           $getid = $mailexist['id'];
+                           if($mdp == $mdp2) {
+                               $insertmbr = $bdd->prepare("INSERT INTO test3(id, prenom, nom, mail, password, statut) VALUES(?, ?, ?, ?, ?, ?)");
+                               $insertmbr->execute(array($getid+1, $prenom, $nom, $mail, $mdp, $eleve));
+                               unset($insertmbr);
+                               $erreur = "Votre compte a bien été créé ! <a href=\"connexion.php\">Me connecter</a>";
+                           }else {
+                               $erreur = "Vos mots de passes ne correspondent pas !";
+                           }
+                       }else{ 
+                           $erreur = "adresse mail deja utilisée !"; 
+                           break;
+                       }
+                           $result = $reqmail->fetch();
+                       }
+                     }
+
+                } else {
+                  $erreur = "Votre adresse mail n'est pas valide !";
+                }
+            } else {
+               $erreur = "Vos adresses mail ne correspondent pas !";
+            }
+         }else{ 
+            $erreur = "Votre nom ne doit pas dépasser 255 caractères !";
+         }
+      } else {
+         $erreur = "Votre prenom ne doit pas dépasser 255 caractères !";
+      }
+   } else {
+      $erreur = "Tous les champs doivent être complétés !";
+   }
+}
+?></script>
 
 <html>
    <head>
@@ -10,7 +98,7 @@
       <div align="center">
          <h2>Inscription</h2>
          <br /><br />
-         <form method="POST" action="inscription.php">
+         <form method="POST" action="">
             <table>
                <tr>
                   <td align="right">
@@ -80,6 +168,15 @@
                </tr>
             </table>
          </form>
+         <script type="php"><?php
+         if(isset($erreur)) {
+            echo '<font color="red">'.$erreur."</font>";
+         }
+         if(isset($e))
+         {
+            echo'erreur';
+         }
+         ?></script>
       </div>
    </body>
 </html>
