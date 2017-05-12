@@ -6,6 +6,7 @@
 body {
   overflow-x: hidden;
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-image:url(../img/logos/header-bg.jpg);
 }
 .text-muted {
   color: #777777;

@@ -1,0 +1,9 @@
+REGEDIT4
+[HKEY_CURRENT_USER\Environment]
+"PHP_PEAR_SYSCONF_DIR"="C:\\wamp64\\bin\\php\\php5.6.25"
+"PHP_PEAR_INSTALL_DIR"="C:\\wamp64\\bin\\php\\php5.6.25\\pear"
+"PHP_PEAR_DOC_DIR"="C:\\wamp64\\bin\\php\\php5.6.25\\docs"
+"PHP_PEAR_BIN_DIR"="C:\\wamp64\\bin\\php\\php5.6.25"
+"PHP_PEAR_DATA_DIR"="C:\\wamp64\\bin\\php\\php5.6.25\\data"
+"PHP_PEAR_PHP_BIN"="C:\\wamp64\\bin\\php\\php5.6.25\\php.exe"
+"PHP_PEAR_TEST_DIR"="C:\\wamp64\\bin\\php\\php5.6.25\\tests"
